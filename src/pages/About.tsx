@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
@@ -17,21 +18,21 @@ const About = () => {
     {
       name: "Marie Dubois",
       role: "CEO & Co-fondatrice",
-      description: "Expert en immobilier avec 15 ans d'expérience",
+      description: "Experte en location avec 15 ans d'expérience",
       avatar: "M",
       gradient: "from-violet-500 to-fuchsia-500"
     },
     {
       name: "Thomas Martin", 
       role: "CTO & Co-fondateur",
-      description: "Ingénieur IA spécialisé en NLP et machine learning",
+      description: "Ingénieur IA spécialisé en analyse de documents",
       avatar: "T",
       gradient: "from-cyan-500 to-emerald-500"
     },
     {
       name: "Sophie Laurent",
       role: "Head of Product",
-      description: "Designer UX avec expertise en produits IA",
+      description: "Designer UX avec expertise en applications simples",
       avatar: "S", 
       gradient: "from-amber-500 to-orange-500"
     }
@@ -41,19 +42,19 @@ const About = () => {
     {
       icon: <Brain className="h-6 w-6" />,
       title: "Innovation IA",
-      description: "Nous repoussons les limites de l'intelligence artificielle pour simplifier l'immobilier.",
+      description: "Nous utilisons l'intelligence artificielle pour simplifier la location.",
       gradient: "from-violet-500 to-fuchsia-500"
     },
     {
       icon: <Shield className="h-6 w-6" />,
       title: "Transparence",
-      description: "Nous croyons en la transparence totale pour protéger nos utilisateurs.",
+      description: "Nous expliquons tout clairement pour protéger nos utilisateurs.",
       gradient: "from-cyan-500 to-emerald-500"
     },
     {
       icon: <Zap className="h-6 w-6" />,
       title: "Simplicité",
-      description: "Rendre l'immobilier accessible à tous grâce à une technologie simple.",
+      description: "Rendre la location accessible à tous grâce à une technologie simple.",
       gradient: "from-amber-500 to-orange-500"
     }
   ];
@@ -94,14 +95,14 @@ const About = () => {
             Notre mission
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-            Révolutionner l'immobilier
+            Simplifier la location
             <span className="block bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
               avec l'intelligence artificielle
             </span>
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Chez PropAnalyzer Pro, nous combinons expertise immobilière et technologies de pointe 
-            pour créer une expérience d'analyse révolutionnaire et accessible à tous les professionnels.
+            Chez PropAnalyzer Pro, nous utilisons la technologie pour rendre la location plus simple 
+            et accessible à tous. Fini les contrats compliqués et les termes difficiles à comprendre.
           </p>
         </div>
 
@@ -113,12 +114,12 @@ const About = () => {
                 <div>
                   <h2 className="text-3xl font-bold text-slate-900 mb-6">Notre mission</h2>
                   <p className="text-lg text-slate-600 mb-6">
-                    Nous croyons que l'analyse immobilière professionnelle et la compréhension des contrats 
-                    ne devraient pas être compliquées. C'est pourquoi nous avons créé PropAnalyzer Pro.
+                    Nous pensons que comprendre un contrat de location et analyser les documents 
+                    ne devrait pas être compliqué. C'est pourquoi nous avons créé PropAnalyzer Pro.
                   </p>
                   <p className="text-lg text-slate-600">
-                    Notre plateforme utilise l'intelligence artificielle pour analyser, conseiller 
-                    et simplifier chaque étape de votre parcours immobilier professionnel.
+                    Notre plateforme utilise l'intelligence artificielle pour analyser, expliquer 
+                    et simplifier chaque étape de votre recherche de logement.
                   </p>
                 </div>
                 <div className="relative">
@@ -153,7 +154,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* Team Section */}
         <section>
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Notre équipe</h2>

@@ -12,7 +12,8 @@ import {
   CheckCircle,
   Play,
   BookOpen,
-  Lightbulb
+  Lightbulb,
+  Download
 } from "lucide-react";
 
 const Guide = () => {
@@ -26,22 +27,22 @@ const Guide = () => {
     },
     {
       number: "02", 
-      title: "Uploadez votre bail",
-      description: "Téléchargez votre contrat de bail au format PDF",
+      title: "Ajoutez votre document",
+      description: "Importez votre contrat de location ou vos réservations Booking/Airbnb",
       icon: <FileText className="h-6 w-6" />,
       gradient: "from-cyan-500 to-emerald-500"
     },
     {
       number: "03",
-      title: "Analysez avec l'IA",
-      description: "Notre IA analyse et identifie les points importants",
+      title: "Laissez l'IA analyser",
+      description: "Notre IA examine et trouve les points importants",
       icon: <Search className="h-6 w-6" />,
       gradient: "from-amber-500 to-orange-500"
     },
     {
       number: "04",
-      title: "Obtenez vos conseils",
-      description: "Recevez des recommandations personnalisées",
+      title: "Recevez vos conseils",
+      description: "Obtenez des recommandations claires et personnalisées",
       icon: <MessageSquare className="h-6 w-6" />,
       gradient: "from-emerald-500 to-teal-500"
     }
@@ -49,19 +50,19 @@ const Guide = () => {
 
   const features = [
     {
-      title: "Analyse de bail IA",
-      description: "Comment notre IA analyse votre contrat en profondeur",
+      title: "Analyse de contrats",
+      description: "Comment notre IA examine votre contrat de location",
       duration: "3 min",
       icon: <FileText className="h-5 w-5" />
     },
     {
-      title: "Recherche intelligente",
-      description: "Trouvez le logement parfait avec nos filtres IA",
+      title: "Import Booking/Airbnb",
+      description: "Importez facilement vos réservations pour les analyser",
       duration: "5 min", 
-      icon: <Search className="h-5 w-5" />
+      icon: <Download className="h-5 w-5" />
     },
     {
-      title: "Assistant conversationnel",
+      title: "Assistant intelligent",
       description: "Posez vos questions à notre IA 24/7",
       duration: "2 min",
       icon: <MessageSquare className="h-5 w-5" />
@@ -69,10 +70,10 @@ const Guide = () => {
   ];
 
   const tips = [
-    "Lisez toujours les clauses de résiliation avant de signer",
-    "Vérifiez les conditions de dépôt de garantie", 
-    "Assurez-vous que les charges sont bien détaillées",
-    "Photographiez l'état des lieux d'entrée",
+    "Lisez toujours les conditions d'annulation avant de réserver",
+    "Vérifiez les frais supplémentaires (ménage, caution, etc.)", 
+    "Assurez-vous que les équipements sont bien mentionnés",
+    "Prenez des photos de l'état du logement à l'arrivée",
     "Gardez tous les échanges écrits avec le propriétaire"
   ];
 
@@ -84,7 +85,6 @@ const Guide = () => {
         <div className="absolute top-1/3 -left-40 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-emerald-400/20 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
       </div>
 
-      {/* Navigation */}
       <nav className="bg-white/70 backdrop-blur-xl border-b border-violet-100/50 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -93,7 +93,7 @@ const Guide = () => {
                 <Brain className="h-5 w-5 text-white" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-                RentWise AI
+                PropAnalyzer Pro
               </span>
             </Link>
             <Link to="/" className="inline-flex items-center text-slate-600 hover:text-violet-600 transition-colors group">
@@ -114,12 +114,12 @@ const Guide = () => {
           <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
             Comment utiliser
             <span className="block bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-              RentWise AI
+              PropAnalyzer Pro
             </span>
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Découvrez comment tirer le meilleur parti de notre plateforme IA 
-            pour vos projets immobiliers en quelques étapes simples.
+            Découvrez comment utiliser simplement notre plateforme IA 
+            pour vos projets de location en quelques étapes faciles.
           </p>
         </div>
 
@@ -127,7 +127,7 @@ const Guide = () => {
         <section className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">4 étapes simples</h2>
-            <p className="text-xl text-slate-600">Commencez à utiliser RentWise AI en moins de 5 minutes</p>
+            <p className="text-xl text-slate-600">Commencez à utiliser PropAnalyzer Pro en moins de 5 minutes</p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -200,7 +200,7 @@ const Guide = () => {
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-slate-900 mb-4">Points clés à vérifier dans un bail</h3>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-4">Points clés à vérifier dans une location</h3>
                   <ul className="space-y-3">
                     {tips.map((tip, index) => (
                       <li key={index} className="flex items-start space-x-3">

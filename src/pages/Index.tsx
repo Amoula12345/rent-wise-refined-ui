@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -18,7 +19,8 @@ import {
   Sparkles,
   Zap,
   Globe,
-  Upload
+  Upload,
+  Download
 } from "lucide-react";
 
 const Index = () => {
@@ -33,23 +35,23 @@ const Index = () => {
   const services = [
     {
       icon: <FileText className="h-8 w-8" />,
-      title: "Analyse de Bail IA",
-      description: "Notre IA analyse votre contrat de bail en quelques secondes et identifie les clauses importantes.",
-      features: ["Détection automatique des clauses", "Analyse des risques", "Recommandations personnalisées"],
+      title: "Analyse de Documents",
+      description: "Notre IA examine vos contrats de location en quelques secondes et trouve les points importants.",
+      features: ["Lecture automatique des clauses", "Détection des risques", "Conseils personnalisés"],
       gradient: "from-violet-500 to-fuchsia-500"
     },
     {
       icon: <Search className="h-8 w-8" />,
       title: "Recherche Intelligente",
-      description: "Trouvez le logement parfait grâce à notre moteur de recherche alimenté par l'IA.",
+      description: "Trouvez le logement parfait grâce à notre moteur de recherche intelligent.",
       features: ["Filtres intelligents", "Suggestions personnalisées", "Alertes en temps réel"],
       gradient: "from-cyan-500 to-emerald-500"
     },
     {
-      icon: <Upload className="h-8 w-8" />,
-      title: "Import de Documents",
-      description: "Importez facilement vos documents PDF, images et fichiers pour une analyse instantanée.",
-      features: ["Support PDF, JPG, PNG", "Analyse OCR avancée", "Extraction de données"],
+      icon: <Download className="h-8 w-8" />,
+      title: "Import Booking & Airbnb",
+      description: "Importez directement vos réservations depuis Booking.com et Airbnb pour une analyse automatique.",
+      features: ["Connexion Booking.com", "Import Airbnb", "Synchronisation automatique"],
       gradient: "from-amber-500 to-orange-500"
     }
   ];
@@ -58,21 +60,21 @@ const Index = () => {
     {
       name: "Marie Dubois",
       role: "Locataire",
-      content: "PropAnalyzer Pro m'a aidée à éviter un piège dans mon contrat de bail. L'analyse IA est impressionnante !",
+      content: "PropAnalyzer Pro m'a aidée à éviter un piège dans mon contrat de location. L'analyse IA est impressionnante !",
       rating: 5,
       avatar: "M"
     },
     {
       name: "Thomas Martin",
       role: "Propriétaire",
-      content: "La plateforme me fait gagner un temps précieux dans la gestion de mes biens immobiliers.",
+      content: "La plateforme me fait gagner un temps précieux dans la gestion de mes biens.",
       rating: 5,
       avatar: "T"
     },
     {
       name: "Sophie Laurent",
       role: "Étudiante",
-      content: "Interface intuitive et conseils très pertinents. Parfait pour les premiers appartements !",
+      content: "Interface simple et conseils très utiles. Parfait pour les premiers appartements !",
       rating: 5,
       avatar: "S"
     }
@@ -80,7 +82,7 @@ const Index = () => {
 
   const stats = [
     { icon: <Users className="h-6 w-6" />, value: "50,000+", label: "Utilisateurs actifs", color: "text-violet-600" },
-    { icon: <FileText className="h-6 w-6" />, value: "200,000+", label: "Baux analysés", color: "text-fuchsia-600" },
+    { icon: <FileText className="h-6 w-6" />, value: "200,000+", label: "Documents analysés", color: "text-fuchsia-600" },
     { icon: <TrendingUp className="h-6 w-6" />, value: "98%", label: "Satisfaction client", color: "text-cyan-600" },
     { icon: <Brain className="h-6 w-6" />, value: "24/7", label: "Support IA", color: "text-emerald-600" }
   ];
@@ -131,17 +133,17 @@ const Index = () => {
           <div className="text-center">
             <Badge className="mb-6 bg-gradient-to-r from-violet-100 to-fuchsia-100 text-violet-700 border-violet-200 hover:from-violet-200 hover:to-fuchsia-200 transition-all duration-300 hover:scale-105">
               <Sparkles className="w-4 h-4 mr-2" />
-              Nouvelle fonctionnalité : Import de documents en un clic
+              Nouveau : Import direct depuis Booking & Airbnb
             </Badge>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight">
               L'IA professionnelle pour
               <span className="block bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 bg-clip-text text-transparent animate-pulse">
-                l'analyse immobilière
+                l'analyse de location
               </span>
             </h1>
             <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Analysez vos contrats, importez vos documents et obtenez des insights professionnels 
-              grâce à notre plateforme d'intelligence artificielle de pointe.
+              Analysez vos contrats de location, importez vos réservations Booking/Airbnb et obtenez des conseils 
+              professionnels grâce à notre intelligence artificielle simple et efficace.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
@@ -153,8 +155,8 @@ const Index = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button variant="outline" size="lg" className="px-8 py-4 text-lg border-slate-300 hover:bg-slate-50 transition-all duration-300 hover:scale-105">
-                <Globe className="mr-2 h-5 w-5" />
-                Voir la démo
+                <Download className="mr-2 h-5 w-5" />
+                Import Booking/Airbnb
               </Button>
             </div>
           </div>
@@ -185,10 +187,10 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Nos services alimentés par l'IA
+              Nos services simples et efficaces
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Découvrez comment notre intelligence artificielle peut vous aider dans tous vos projets immobiliers
+              Découvrez comment notre intelligence artificielle peut vous aider dans vos projets de location
             </p>
           </div>
           
@@ -224,7 +226,7 @@ const Index = () => {
               Testez notre assistant IA
             </h2>
             <p className="text-xl text-slate-600">
-              Posez vos questions sur la location immobilière ou importez vos documents
+              Posez vos questions sur la location ou importez vos documents et réservations
             </p>
           </div>
           
@@ -237,15 +239,15 @@ const Index = () => {
                   </div>
                   <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg max-w-md">
                     <p className="text-slate-700">
-                      Bonjour ! Je suis votre assistant IA spécialisé en immobilier. 
-                      Vous pouvez me poser des questions ou importer directement vos documents pour analyse.
+                      Bonjour ! Je suis votre assistant IA spécialisé en location. 
+                      Vous pouvez me poser des questions ou importer directement vos documents et réservations Booking/Airbnb.
                     </p>
                   </div>
                 </div>
                 
                 <div className="flex space-x-4">
                   <Textarea
-                    placeholder="Tapez votre question ici ou glissez-déposez vos fichiers PDF, JPG, PNG..."
+                    placeholder="Posez votre question ici ou glissez-déposez vos fichiers PDF, ou liens Booking/Airbnb..."
                     value={chatMessage}
                     onChange={(e) => setChatMessage(e.target.value)}
                     className="flex-1 border-violet-200 focus:border-violet-400 focus:ring-violet-400 bg-white/80 backdrop-blur-sm"
@@ -275,6 +277,18 @@ const Index = () => {
                     <span className="text-sm">L'IA analyse votre question...</span>
                   </div>
                 )}
+                
+                {/* Booking/Airbnb Import Options */}
+                <div className="grid grid-cols-2 gap-4 mt-6">
+                  <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50">
+                    <Download className="h-4 w-4 mr-2" />
+                    Importer Booking.com
+                  </Button>
+                  <Button variant="outline" className="border-pink-200 text-pink-600 hover:bg-pink-50">
+                    <Download className="h-4 w-4 mr-2" />
+                    Importer Airbnb
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -324,7 +338,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Prêt à révolutionner votre analyse immobilière ?
+            Prêt à simplifier votre analyse de location ?
           </h2>
           <p className="text-xl text-white/90 mb-8">
             Rejoignez des milliers de professionnels qui font confiance à PropAnalyzer Pro
@@ -345,7 +359,7 @@ const Index = () => {
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-violet-600 px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
-              Planifier une démo
+              Voir une démo
             </Button>
           </div>
         </div>
@@ -363,17 +377,17 @@ const Index = () => {
                 <span className="text-xl font-bold">PropAnalyzer Pro</span>
               </div>
               <p className="text-slate-400 mb-4">
-                L'intelligence artificielle professionnelle au service de l'immobilier.
+                L'intelligence artificielle simple au service de la location.
               </p>
             </div>
             
             <div>
               <h3 className="font-semibold mb-4">Services</h3>
               <ul className="space-y-2 text-slate-400">
-                <li><a href="#" className="hover:text-white transition-colors">Analyse de bail</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Import de documents</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Analyse de contrats</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Import Booking/Airbnb</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Assistant IA</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Conseils juridiques</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Conseils personnalisés</a></li>
               </ul>
             </div>
             
