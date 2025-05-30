@@ -1,4 +1,3 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
@@ -76,7 +75,7 @@ const About = () => {
                 <Brain className="h-5 w-5 text-white" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-                RentWise AI
+                PropAnalyzer Pro
               </span>
             </Link>
             <Link to="/" className="inline-flex items-center text-slate-600 hover:text-violet-600 transition-colors group">
@@ -101,8 +100,8 @@ const About = () => {
             </span>
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Chez RentWise AI, nous combinons expertise immobilière et technologies de pointe 
-            pour créer une expérience de location révolutionnaire et accessible à tous.
+            Chez PropAnalyzer Pro, nous combinons expertise immobilière et technologies de pointe 
+            pour créer une expérience d'analyse révolutionnaire et accessible à tous les professionnels.
           </p>
         </div>
 
@@ -114,12 +113,12 @@ const About = () => {
                 <div>
                   <h2 className="text-3xl font-bold text-slate-900 mb-6">Notre mission</h2>
                   <p className="text-lg text-slate-600 mb-6">
-                    Nous croyons que trouver le logement parfait et comprendre son contrat de bail 
-                    ne devrait pas être compliqué. C'est pourquoi nous avons créé RentWise AI.
+                    Nous croyons que l'analyse immobilière professionnelle et la compréhension des contrats 
+                    ne devraient pas être compliquées. C'est pourquoi nous avons créé PropAnalyzer Pro.
                   </p>
                   <p className="text-lg text-slate-600">
                     Notre plateforme utilise l'intelligence artificielle pour analyser, conseiller 
-                    et simplifier chaque étape de votre parcours immobilier.
+                    et simplifier chaque étape de votre parcours immobilier professionnel.
                   </p>
                 </div>
                 <div className="relative">

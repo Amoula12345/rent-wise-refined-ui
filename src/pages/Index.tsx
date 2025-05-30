@@ -17,7 +17,8 @@ import {
   TrendingUp,
   Sparkles,
   Zap,
-  Globe
+  Globe,
+  Upload
 } from "lucide-react";
 
 const Index = () => {
@@ -45,10 +46,10 @@ const Index = () => {
       gradient: "from-cyan-500 to-emerald-500"
     },
     {
-      icon: <MessageSquare className="h-8 w-8" />,
-      title: "Assistant IA 24/7",
-      description: "Posez vos questions sur la location, notre IA vous répond instantanément.",
-      features: ["Réponses instantanées", "Conseils juridiques", "Support multilingue"],
+      icon: <Upload className="h-8 w-8" />,
+      title: "Import de Documents",
+      description: "Importez facilement vos documents PDF, images et fichiers pour une analyse instantanée.",
+      features: ["Support PDF, JPG, PNG", "Analyse OCR avancée", "Extraction de données"],
       gradient: "from-amber-500 to-orange-500"
     }
   ];
@@ -57,7 +58,7 @@ const Index = () => {
     {
       name: "Marie Dubois",
       role: "Locataire",
-      content: "RentWise m'a aidée à éviter un piège dans mon contrat de bail. L'analyse IA est impressionnante !",
+      content: "PropAnalyzer Pro m'a aidée à éviter un piège dans mon contrat de bail. L'analyse IA est impressionnante !",
       rating: 5,
       avatar: "M"
     },
@@ -102,7 +103,7 @@ const Index = () => {
                 <Brain className="h-5 w-5 text-white" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-                RentWise AI
+                PropAnalyzer Pro
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
@@ -130,25 +131,25 @@ const Index = () => {
           <div className="text-center">
             <Badge className="mb-6 bg-gradient-to-r from-violet-100 to-fuchsia-100 text-violet-700 border-violet-200 hover:from-violet-200 hover:to-fuchsia-200 transition-all duration-300 hover:scale-105">
               <Sparkles className="w-4 h-4 mr-2" />
-              Nouvelle fonctionnalité : Analyse IA en temps réel
+              Nouvelle fonctionnalité : Import de documents en un clic
             </Badge>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight">
-              L'IA qui révolutionne
+              L'IA professionnelle pour
               <span className="block bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 bg-clip-text text-transparent animate-pulse">
-                la location immobilière
+                l'analyse immobilière
               </span>
             </h1>
             <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Analysez vos contrats, trouvez le logement parfait et obtenez des conseils personnalisés 
-              grâce à notre intelligence artificielle de nouvelle génération.
+              Analysez vos contrats, importez vos documents et obtenez des insights professionnels 
+              grâce à notre plateforme d'intelligence artificielle de pointe.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
               >
-                <Zap className="mr-2 h-5 w-5" />
-                Analyser mon bail gratuitement
+                <Upload className="mr-2 h-5 w-5" />
+                Importer un document
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button variant="outline" size="lg" className="px-8 py-4 text-lg border-slate-300 hover:bg-slate-50 transition-all duration-300 hover:scale-105">
@@ -223,7 +224,7 @@ const Index = () => {
               Testez notre assistant IA
             </h2>
             <p className="text-xl text-slate-600">
-              Posez vos questions sur la location immobilière
+              Posez vos questions sur la location immobilière ou importez vos documents
             </p>
           </div>
           
@@ -237,26 +238,35 @@ const Index = () => {
                   <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg max-w-md">
                     <p className="text-slate-700">
                       Bonjour ! Je suis votre assistant IA spécialisé en immobilier. 
-                      Comment puis-je vous aider aujourd'hui ?
+                      Vous pouvez me poser des questions ou importer directement vos documents pour analyse.
                     </p>
                   </div>
                 </div>
                 
                 <div className="flex space-x-4">
                   <Textarea
-                    placeholder="Tapez votre question ici... (ex: Que dois-je vérifier dans un contrat de bail ?)"
+                    placeholder="Tapez votre question ici ou glissez-déposez vos fichiers PDF, JPG, PNG..."
                     value={chatMessage}
                     onChange={(e) => setChatMessage(e.target.value)}
                     className="flex-1 border-violet-200 focus:border-violet-400 focus:ring-violet-400 bg-white/80 backdrop-blur-sm"
                     rows={3}
                   />
-                  <Button
-                    onClick={handleAnalyze}
-                    disabled={isAnalyzing || !chatMessage.trim()}
-                    className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 px-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-                  >
-                    {isAnalyzing ? "Analyse..." : "Envoyer"}
-                  </Button>
+                  <div className="flex flex-col space-y-2">
+                    <Button
+                      onClick={handleAnalyze}
+                      disabled={isAnalyzing || !chatMessage.trim()}
+                      className="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 px-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                    >
+                      {isAnalyzing ? "Analyse..." : "Envoyer"}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="border-violet-200 text-violet-600 hover:bg-violet-50 px-6 shadow-lg hover:shadow-xl transition-all duration-300"
+                    >
+                      <Upload className="h-4 w-4 mr-2" />
+                      Importer
+                    </Button>
+                  </div>
                 </div>
                 
                 {isAnalyzing && (
@@ -314,10 +324,10 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Prêt à révolutionner votre expérience immobilière ?
+            Prêt à révolutionner votre analyse immobilière ?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Rejoignez des milliers d'utilisateurs qui font confiance à notre IA
+            Rejoignez des milliers de professionnels qui font confiance à PropAnalyzer Pro
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/auth">
@@ -350,10 +360,10 @@ const Index = () => {
                 <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-2xl flex items-center justify-center shadow-lg">
                   <Brain className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xl font-bold">RentWise AI</span>
+                <span className="text-xl font-bold">PropAnalyzer Pro</span>
               </div>
               <p className="text-slate-400 mb-4">
-                L'intelligence artificielle au service de l'immobilier.
+                L'intelligence artificielle professionnelle au service de l'immobilier.
               </p>
             </div>
             
@@ -361,7 +371,7 @@ const Index = () => {
               <h3 className="font-semibold mb-4">Services</h3>
               <ul className="space-y-2 text-slate-400">
                 <li><a href="#" className="hover:text-white transition-colors">Analyse de bail</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Recherche logement</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Import de documents</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Assistant IA</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Conseils juridiques</a></li>
               </ul>
@@ -389,7 +399,7 @@ const Index = () => {
           </div>
           
           <div className="border-t border-slate-800 mt-12 pt-8 text-center text-slate-400">
-            <p>&copy; 2024 RentWise AI. Tous droits réservés.</p>
+            <p>&copy; 2024 PropAnalyzer Pro. Tous droits réservés.</p>
           </div>
         </div>
       </footer>
