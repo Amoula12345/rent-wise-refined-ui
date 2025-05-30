@@ -1,9 +1,7 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Link } from "react-router-dom";
 import { 
@@ -108,9 +106,9 @@ const Index = () => {
               </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-slate-600 hover:text-violet-600 transition-colors font-medium">Services</a>
-              <a href="#about" className="text-slate-600 hover:text-violet-600 transition-colors font-medium">À propos</a>
-              <a href="#contact" className="text-slate-600 hover:text-violet-600 transition-colors font-medium">Contact</a>
+              <Link to="/about" className="text-slate-600 hover:text-violet-600 transition-colors font-medium">À propos</Link>
+              <Link to="/guide" className="text-slate-600 hover:text-violet-600 transition-colors font-medium">Guide</Link>
+              <Link to="/contact" className="text-slate-600 hover:text-violet-600 transition-colors font-medium">Contact</Link>
               <Link to="/auth">
                 <Button variant="outline" className="border-violet-200 text-violet-600 hover:bg-violet-50 hover:border-violet-300 transition-all duration-300">
                   Connexion
@@ -372,7 +370,7 @@ const Index = () => {
             <div>
               <h3 className="font-semibold mb-4">Entreprise</h3>
               <ul className="space-y-2 text-slate-400">
-                <li><a href="#" className="hover:text-white transition-colors">À propos</a></li>
+                <li><Link to="/about" className="hover:text-white transition-colors">À propos</Link></li>
                 <li><a href="#" className="hover:text-white transition-colors">Équipe</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Carrières</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Presse</a></li>
@@ -382,8 +380,8 @@ const Index = () => {
             <div>
               <h3 className="font-semibold mb-4">Support</h3>
               <ul className="space-y-2 text-slate-400">
-                <li><a href="#" className="hover:text-white transition-colors">Centre d'aide</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+                <li><Link to="/guide" className="hover:text-white transition-colors">Guide d'utilisation</Link></li>
+                <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
                 <li><a href="#" className="hover:text-white transition-colors">Confidentialité</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">CGU</a></li>
               </ul>
