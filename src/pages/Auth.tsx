@@ -66,7 +66,7 @@ const Auth = () => {
               <Brain className="h-6 w-6 text-white" />
             </div>
             <h1 className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-              RentWise AI
+              PropAnalyzer Pro
             </h1>
           </div>
           
@@ -75,10 +75,21 @@ const Auth = () => {
           </h2>
           <p className="text-slate-600">
             {isLogin 
-              ? "Connectez-vous pour accéder à votre dashboard" 
+              ? "Connectez-vous pour accéder à votre tableau de bord" 
               : "Créez votre compte et révolutionnez votre expérience immobilière"
             }
           </p>
+        </div>
+
+        {/* Quick Access to Dashboard */}
+        <div className="mb-6">
+          <Link 
+            to="/dashboard" 
+            className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-lg flex items-center justify-center space-x-2"
+          >
+            <Brain className="h-4 w-4" />
+            <span>Accéder au Tableau de Bord</span>
+          </Link>
         </div>
 
         {/* Auth Card */}
