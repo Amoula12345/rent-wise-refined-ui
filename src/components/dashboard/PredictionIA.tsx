@@ -27,22 +27,10 @@ const PredictionIA = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(new Date());
 
-  // Données simulées pour la prédiction
-  const predictionData = [
-    { semaine: 'S1 Fév', historique: 85, prediction: 82, periodesCalmes: true },
-    { semaine: 'S2 Fév', historique: 78, prediction: 75, periodesCalmes: true },
-    { semaine: 'S3 Fév', historique: 92, prediction: 88, periodesCalmes: false },
-    { semaine: 'S4 Fév', historique: 88, prediction: 90, periodesCalmes: false },
-    { semaine: 'S1 Mar', historique: null, prediction: 45, periodesCalmes: true },
-    { semaine: 'S2 Mar', historique: null, prediction: 52, periodesCalmes: true },
-    { semaine: 'S3 Mar', historique: null, prediction: 78, periodesCalmes: false },
-    { semaine: 'S4 Mar', historique: null, prediction: 85, periodesCalmes: false },
-    { semaine: 'S1 Avr', historique: null, prediction: 92, periodesCalmes: false },
-    { semaine: 'S2 Avr', historique: null, prediction: 88, periodesCalmes: false }
-  ];
-
-  const periodesCalmes = predictionData.filter(item => item.periodesCalmes && !item.historique);
-  const periodesFortes = predictionData.filter(item => !item.periodesCalmes && !item.historique);
+  // Données vides - à connecter avec le backend
+  const predictionData: any[] = [];
+  const periodesCalmes: any[] = [];
+  const periodesFortes: any[] = [];
 
   const handleRegenerateIA = () => {
     setIsGenerating(true);
@@ -102,48 +90,11 @@ const PredictionIA = () => {
               </div>
             </div>
           ) : (
-            <ResponsiveContainer width="100%" height={400}>
-              <AreaChart data={predictionData}>
-                <defs>
-                  <linearGradient id="colorHistorique" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-                    <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
-                  </linearGradient>
-                  <linearGradient id="colorPrediction" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-                    <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="semaine" />
-                <YAxis domain={[0, 100]} />
-                <Tooltip 
-                  formatter={(value, name) => [
-                    `${value}%`, 
-                    name === 'historique' ? 'Historique' : 'Prédiction IA'
-                  ]} 
-                />
-                <Area
-                  type="monotone"
-                  dataKey="historique"
-                  stroke="#8884d8"
-                  fillOpacity={1}
-                  fill="url(#colorHistorique)"
-                  strokeWidth={2}
-                  name="historique"
-                />
-                <Area
-                  type="monotone"
-                  dataKey="prediction"
-                  stroke="#82ca9d"
-                  fillOpacity={1}
-                  fill="url(#colorPrediction)"
-                  strokeWidth={2}
-                  strokeDasharray="5 5"
-                  name="prediction"
-                />
-              </AreaChart>
-            </ResponsiveContainer>
+            <div className="flex items-center justify-center h-64">
+              <p className="text-slate-500">
+                Aucune donnée disponible pour la prédiction. Importez des réservations pour commencer l'analyse IA.
+              </p>
+            </div>
           )}
         </CardContent>
       </Card>
@@ -159,22 +110,29 @@ const PredictionIA = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3">
-              {periodesCalmes.map((periode, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-orange-50 rounded-lg">
-                  <div className="flex items-center space-x-3">
-                    <AlertTriangle className="h-5 w-5 text-orange-600" />
-                    <div>
-                      <p className="font-medium text-slate-900">{periode.semaine}</p>
-                      <p className="text-sm text-slate-600">Occupation prédite: {periode.prediction}%</p>
+            {periodesCalmes.length === 0 ? (
+              <div className="text-center py-8">
+                <AlertTriangle className="h-12 w-12 text-slate-300 mx-auto mb-4" />
+                <p className="text-slate-500">Aucune prédiction disponible</p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {periodesCalmes.map((periode, index) => (
+                  <div key={index} className="flex items-center justify-between p-3 bg-orange-50 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <AlertTriangle className="h-5 w-5 text-orange-600" />
+                      <div>
+                        <p className="font-medium text-slate-900">{periode.semaine}</p>
+                        <p className="text-sm text-slate-600">Occupation prédite: {periode.prediction}%</p>
+                      </div>
                     </div>
+                    <Badge className="bg-orange-100 text-orange-700 border-orange-200">
+                      Période calme
+                    </Badge>
                   </div>
-                  <Badge className="bg-orange-100 text-orange-700 border-orange-200">
-                    Période calme
-                  </Badge>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
             <div className="mt-4 p-4 bg-blue-50 rounded-lg">
               <h4 className="font-medium text-blue-900 mb-2">💡 Recommandations</h4>
               <ul className="text-sm text-blue-700 space-y-1">
@@ -195,22 +153,29 @@ const PredictionIA = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3">
-              {periodesFortes.map((periode, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-emerald-50 rounded-lg">
-                  <div className="flex items-center space-x-3">
-                    <Calendar className="h-5 w-5 text-emerald-600" />
-                    <div>
-                      <p className="font-medium text-slate-900">{periode.semaine}</p>
-                      <p className="text-sm text-slate-600">Occupation prédite: {periode.prediction}%</p>
+            {periodesFortes.length === 0 ? (
+              <div className="text-center py-8">
+                <Calendar className="h-12 w-12 text-slate-300 mx-auto mb-4" />
+                <p className="text-slate-500">Aucune prédiction disponible</p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {periodesFortes.map((periode, index) => (
+                  <div key={index} className="flex items-center justify-between p-3 bg-emerald-50 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      <Calendar className="h-5 w-5 text-emerald-600" />
+                      <div>
+                        <p className="font-medium text-slate-900">{periode.semaine}</p>
+                        <p className="text-sm text-slate-600">Occupation prédite: {periode.prediction}%</p>
+                      </div>
                     </div>
+                    <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200">
+                      Forte demande
+                    </Badge>
                   </div>
-                  <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200">
-                    Forte demande
-                  </Badge>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
             <div className="mt-4 p-4 bg-green-50 rounded-lg">
               <h4 className="font-medium text-green-900 mb-2">📈 Optimisations</h4>
               <ul className="text-sm text-green-700 space-y-1">
@@ -231,15 +196,15 @@ const PredictionIA = () => {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600 mb-2">87%</div>
+              <div className="text-3xl font-bold text-slate-400 mb-2">0%</div>
               <p className="text-sm text-slate-600">Précision des prédictions</p>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">247</div>
+              <div className="text-3xl font-bold text-slate-400 mb-2">0</div>
               <p className="text-sm text-slate-600">Réservations analysées</p>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600 mb-2">18</div>
+              <div className="text-3xl font-bold text-slate-400 mb-2">0</div>
               <p className="text-sm text-slate-600">Mois d'historique</p>
             </div>
           </div>

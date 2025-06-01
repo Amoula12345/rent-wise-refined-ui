@@ -28,34 +28,35 @@ const Dashboard = () => {
   const [userRole] = useState<'admin' | 'user'>('admin'); // Simule le rôle utilisateur
   const [isVerified] = useState(true);
   
+  // Stats vides - à connecter avec le backend
   const stats = [
     {
       title: "Total Réservations",
-      value: "1,247",
+      value: "0",
       icon: <Calendar className="h-4 w-4" />,
-      change: "+12% ce mois",
-      color: "text-emerald-600"
+      change: "Aucune donnée",
+      color: "text-slate-400"
     },
     {
       title: "Revenus Totaux",
-      value: "€45,678",
+      value: "€0",
       icon: <Euro className="h-4 w-4" />,
-      change: "+8% ce mois",
-      color: "text-blue-600"
+      change: "Aucune donnée",
+      color: "text-slate-400"
     },
     {
       title: "Logements Actifs",
-      value: "23",
+      value: "0",
       icon: <Home className="h-4 w-4" />,
-      change: "+2 nouveaux",
-      color: "text-purple-600"
+      change: "Aucune donnée",
+      color: "text-slate-400"
     },
     {
       title: "Taux d'Occupation",
-      value: "87%",
+      value: "0%",
       icon: <TrendingUp className="h-4 w-4" />,
-      change: "+5% vs mois dernier",
-      color: "text-orange-600"
+      change: "Aucune donnée",
+      color: "text-slate-400"
     }
   ];
 

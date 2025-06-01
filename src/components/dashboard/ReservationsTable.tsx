@@ -21,48 +21,8 @@ interface ReservationsTableProps {
 const ReservationsTable = ({ userRole }: ReservationsTableProps) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Données simulées des réservations
-  const reservations = [
-    {
-      id: 1,
-      codeConfirmation: "HM4AR2U9C7",
-      nomClient: "Marie Dubois",
-      logement: "Appartement Centre Ville",
-      plateforme: "Airbnb",
-      dateArrivee: "2024-01-15",
-      dateDepart: "2024-01-18",
-      nbNuits: 3,
-      montantTotal: 450.00,
-      devise: "EUR",
-      statut: "Confirmée"
-    },
-    {
-      id: 2,
-      codeConfirmation: "BKG789654",
-      nomClient: "Thomas Martin",
-      logement: "Studio Moderne",
-      plateforme: "Booking",
-      dateArrivee: "2024-01-20",
-      dateDepart: "2024-01-25",
-      nbNuits: 5,
-      montantTotal: 625.00,
-      devise: "EUR",
-      statut: "En cours"
-    },
-    {
-      id: 3,
-      codeConfirmation: "AIR456123",
-      nomClient: "Sophie Laurent",
-      logement: "Maison avec Jardin",
-      plateforme: "Airbnb",
-      dateArrivee: "2024-02-01",
-      dateDepart: "2024-02-07",
-      nbNuits: 6,
-      montantTotal: 780.00,
-      devise: "EUR",
-      statut: "Confirmée"
-    }
-  ];
+  // Données vides - à connecter avec le backend
+  const reservations: any[] = [];
 
   const getStatutColor = (statut: string) => {
     switch (statut.toLowerCase()) {
@@ -84,9 +44,9 @@ const ReservationsTable = ({ userRole }: ReservationsTableProps) => {
   };
 
   const filteredReservations = reservations.filter(reservation =>
-    reservation.nomClient.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    reservation.codeConfirmation.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    reservation.logement.toLowerCase().includes(searchTerm.toLowerCase())
+    reservation.nomClient?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    reservation.codeConfirmation?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    reservation.logement?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -145,29 +105,37 @@ const ReservationsTable = ({ userRole }: ReservationsTableProps) => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredReservations.map((reservation) => (
-                <TableRow key={reservation.id} className="hover:bg-slate-50">
-                  <TableCell className="font-mono text-sm">{reservation.codeConfirmation}</TableCell>
-                  <TableCell className="font-medium">{reservation.nomClient}</TableCell>
-                  <TableCell>{reservation.logement}</TableCell>
-                  <TableCell>
-                    <Badge className={getPlatformeColor(reservation.plateforme)}>
-                      {reservation.plateforme}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>{new Date(reservation.dateArrivee).toLocaleDateString('fr-FR')}</TableCell>
-                  <TableCell>{new Date(reservation.dateDepart).toLocaleDateString('fr-FR')}</TableCell>
-                  <TableCell className="text-center">{reservation.nbNuits}</TableCell>
-                  <TableCell className="font-semibold">
-                    {reservation.montantTotal.toFixed(2)} {reservation.devise}
-                  </TableCell>
-                  <TableCell>
-                    <Badge className={getStatutColor(reservation.statut)}>
-                      {reservation.statut}
-                    </Badge>
+              {filteredReservations.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={9} className="text-center py-8 text-slate-500">
+                    Aucune réservation trouvée. Importez des fichiers pour commencer.
                   </TableCell>
                 </TableRow>
-              ))}
+              ) : (
+                filteredReservations.map((reservation) => (
+                  <TableRow key={reservation.id} className="hover:bg-slate-50">
+                    <TableCell className="font-mono text-sm">{reservation.codeConfirmation}</TableCell>
+                    <TableCell className="font-medium">{reservation.nomClient}</TableCell>
+                    <TableCell>{reservation.logement}</TableCell>
+                    <TableCell>
+                      <Badge className={getPlatformeColor(reservation.plateforme)}>
+                        {reservation.plateforme}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>{new Date(reservation.dateArrivee).toLocaleDateString('fr-FR')}</TableCell>
+                    <TableCell>{new Date(reservation.dateDepart).toLocaleDateString('fr-FR')}</TableCell>
+                    <TableCell className="text-center">{reservation.nbNuits}</TableCell>
+                    <TableCell className="font-semibold">
+                      {reservation.montantTotal?.toFixed(2)} {reservation.devise}
+                    </TableCell>
+                    <TableCell>
+                      <Badge className={getStatutColor(reservation.statut)}>
+                        {reservation.statut}
+                      </Badge>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
             </TableBody>
           </Table>
         </div>

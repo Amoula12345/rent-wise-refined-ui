@@ -21,39 +21,8 @@ interface LogementsTableProps {
 const LogementsTable = ({ userRole }: LogementsTableProps) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Données simulées des logements
-  const logements = [
-    {
-      id: 1,
-      nomLogement: "Appartement Centre Ville",
-      plateforme: "Airbnb",
-      location: "Paris 1er",
-      nbReservations: 24,
-      revenuTotal: 12450.00,
-      tauxOccupation: 87,
-      dernierereservation: "2024-01-18"
-    },
-    {
-      id: 2,
-      nomLogement: "Studio Moderne",
-      plateforme: "Booking",
-      location: "Lyon 2ème",
-      nbReservations: 18,
-      revenuTotal: 8750.00,
-      tauxOccupation: 72,
-      dernierereservation: "2024-01-25"
-    },
-    {
-      id: 3,
-      nomLogement: "Maison avec Jardin",
-      plateforme: "Airbnb",
-      location: "Marseille 8ème",
-      nbReservations: 15,
-      revenuTotal: 15600.00,
-      tauxOccupation: 91,
-      dernierereservation: "2024-02-07"
-    }
-  ];
+  // Données vides - à connecter avec le backend
+  const logements: any[] = [];
 
   const getPlatformeColor = (plateforme: string) => {
     return plateforme === 'Airbnb' 
@@ -68,8 +37,8 @@ const LogementsTable = ({ userRole }: LogementsTableProps) => {
   };
 
   const filteredLogements = logements.filter(logement =>
-    logement.nomLogement.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    logement.location.toLowerCase().includes(searchTerm.toLowerCase())
+    logement.nomLogement?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    logement.location?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -117,30 +86,38 @@ const LogementsTable = ({ userRole }: LogementsTableProps) => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredLogements.map((logement) => (
-                <TableRow key={logement.id} className="hover:bg-slate-50">
-                  <TableCell className="font-medium">{logement.nomLogement}</TableCell>
-                  <TableCell>
-                    <div className="flex items-center">
-                      <MapPin className="h-4 w-4 mr-1 text-slate-400" />
-                      {logement.location}
-                    </div>
+              {filteredLogements.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={7} className="text-center py-8 text-slate-500">
+                    Aucun logement trouvé. Les logements apparaîtront automatiquement lors de l'import des réservations.
                   </TableCell>
-                  <TableCell>
-                    <Badge className={getPlatformeColor(logement.plateforme)}>
-                      {logement.plateforme}
-                    </Badge>
-                  </TableCell>
-                  <TableCell className="text-center font-semibold">{logement.nbReservations}</TableCell>
-                  <TableCell className="font-semibold">€{logement.revenuTotal.toLocaleString()}</TableCell>
-                  <TableCell>
-                    <span className={`font-semibold ${getTauxColor(logement.tauxOccupation)}`}>
-                      {logement.tauxOccupation}%
-                    </span>
-                  </TableCell>
-                  <TableCell>{new Date(logement.dernierereservation).toLocaleDateString('fr-FR')}</TableCell>
                 </TableRow>
-              ))}
+              ) : (
+                filteredLogements.map((logement) => (
+                  <TableRow key={logement.id} className="hover:bg-slate-50">
+                    <TableCell className="font-medium">{logement.nomLogement}</TableCell>
+                    <TableCell>
+                      <div className="flex items-center">
+                        <MapPin className="h-4 w-4 mr-1 text-slate-400" />
+                        {logement.location}
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <Badge className={getPlatformeColor(logement.plateforme)}>
+                        {logement.plateforme}
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="text-center font-semibold">{logement.nbReservations}</TableCell>
+                    <TableCell className="font-semibold">€{logement.revenuTotal?.toLocaleString()}</TableCell>
+                    <TableCell>
+                      <span className={`font-semibold ${getTauxColor(logement.tauxOccupation)}`}>
+                        {logement.tauxOccupation}%
+                      </span>
+                    </TableCell>
+                    <TableCell>{logement.dernierereservation ? new Date(logement.dernierereservation).toLocaleDateString('fr-FR') : '-'}</TableCell>
+                  </TableRow>
+                ))
+              )}
             </TableBody>
           </Table>
         </div>
