@@ -4,16 +4,19 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { 
-  Brain, 
+  BarChart3, 
   FileText, 
-  Search, 
+  Upload, 
   MessageSquare,
   ArrowLeft,
   CheckCircle,
   Play,
   BookOpen,
   Lightbulb,
-  Download
+  Download,
+  FileSpreadsheet,
+  Home,
+  Brain
 } from "lucide-react";
 
 const Guide = () => {
@@ -21,82 +24,112 @@ const Guide = () => {
     {
       number: "01",
       title: "Créez votre compte",
-      description: "Inscrivez-vous gratuitement avec votre email ou Google",
-      icon: <Brain className="h-6 w-6" />,
-      gradient: "from-violet-500 to-fuchsia-500"
+      description: "Inscrivez-vous avec votre email et obtenez la vérification",
+      icon: <MessageSquare className="h-6 w-6" />,
+      gradient: "from-blue-500 to-cyan-500"
     },
     {
       number: "02", 
-      title: "Ajoutez votre document",
-      description: "Importez votre contrat de location ou vos réservations Booking/Airbnb",
-      icon: <FileText className="h-6 w-6" />,
-      gradient: "from-cyan-500 to-emerald-500"
+      title: "Téléchargez vos données",
+      description: "Exportez vos fichiers CSV depuis Airbnb et XLS depuis Booking.com",
+      icon: <Download className="h-6 w-6" />,
+      gradient: "from-pink-500 to-rose-500"
     },
     {
       number: "03",
-      title: "Laissez l'IA analyser",
-      description: "Notre IA examine et trouve les points importants",
-      icon: <Search className="h-6 w-6" />,
-      gradient: "from-amber-500 to-orange-500"
+      title: "Importez dans la plateforme",
+      description: "Uploadez vos fichiers pour analyse automatique",
+      icon: <Upload className="h-6 w-6" />,
+      gradient: "from-emerald-500 to-teal-500"
     },
     {
       number: "04",
-      title: "Recevez vos conseils",
-      description: "Obtenez des recommandations claires et personnalisées",
-      icon: <MessageSquare className="h-6 w-6" />,
-      gradient: "from-emerald-500 to-teal-500"
+      title: "Analysez avec l'IA",
+      description: "Consultez statistiques, graphiques et prédictions intelligentes",
+      icon: <Brain className="h-6 w-6" />,
+      gradient: "from-violet-500 to-purple-500"
     }
   ];
 
-  const features = [
+  const tutorials = [
     {
-      title: "Analyse de contrats",
-      description: "Comment notre IA examine votre contrat de location",
-      duration: "3 min",
-      icon: <FileText className="h-5 w-5" />
+      title: "Comment exporter depuis Airbnb",
+      description: "Guide détaillé pour télécharger votre fichier CSV des réservations",
+      duration: "4 min",
+      thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=225&fit=crop",
+      icon: <FileSpreadsheet className="h-5 w-5" />,
+      category: "Airbnb"
     },
     {
-      title: "Import Booking/Airbnb",
-      description: "Importez facilement vos réservations pour les analyser",
+      title: "Export des données Booking.com",
+      description: "Procédure pour récupérer vos réservations au format XLS",
       duration: "5 min", 
-      icon: <Download className="h-5 w-5" />
+      thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=225&fit=crop",
+      icon: <FileSpreadsheet className="h-5 w-5" />,
+      category: "Booking"
     },
     {
-      title: "Assistant intelligent",
-      description: "Posez vos questions à notre IA 24/7",
-      duration: "2 min",
-      icon: <MessageSquare className="h-5 w-5" />
+      title: "Import et analyse des fichiers",
+      description: "Comment uploader et traiter vos données dans la plateforme",
+      duration: "6 min",
+      thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=225&fit=crop",
+      icon: <Upload className="h-5 w-5" />,
+      category: "Import"
+    },
+    {
+      title: "Comprendre les statistiques",
+      description: "Lecture des graphiques, revenus et taux d'occupation",
+      duration: "7 min",
+      thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=225&fit=crop",
+      icon: <BarChart3 className="h-5 w-5" />,
+      category: "Analyse"
+    },
+    {
+      title: "Gestion des logements",
+      description: "Organisation et suivi de vos propriétés multi-plateformes",
+      duration: "5 min",
+      thumbnail: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=225&fit=crop",
+      icon: <Home className="h-5 w-5" />,
+      category: "Gestion"
+    },
+    {
+      title: "Prédictions IA avancées",
+      description: "Utiliser l'intelligence artificielle pour optimiser vos revenus",
+      duration: "8 min",
+      thumbnail: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=225&fit=crop",
+      icon: <Brain className="h-5 w-5" />,
+      category: "IA"
     }
   ];
 
   const tips = [
-    "Lisez toujours les conditions d'annulation avant de réserver",
-    "Vérifiez les frais supplémentaires (ménage, caution, etc.)", 
-    "Assurez-vous que les équipements sont bien mentionnés",
-    "Prenez des photos de l'état du logement à l'arrivée",
-    "Gardez tous les échanges écrits avec le propriétaire"
+    "Exportez vos données mensuellement pour un suivi régulier",
+    "Vérifiez la cohérence des données avant import (noms de logements)",
+    "Utilisez les prédictions IA pour ajuster vos tarifs saisonniers", 
+    "Surveillez votre taux d'occupation par plateforme",
+    "Exportez vos rapports en PDF pour vos déclarations fiscales"
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-50 via-fuchsia-50 to-cyan-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-pink-50 to-purple-50 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-violet-400/20 to-fuchsia-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/3 -left-40 w-96 h-96 bg-gradient-to-br from-cyan-400/20 to-emerald-400/20 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-pink-400/20 to-blue-400/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/3 -left-40 w-96 h-96 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
       </div>
 
-      <nav className="bg-white/70 backdrop-blur-xl border-b border-violet-100/50 sticky top-0 z-50">
+      <nav className="bg-white/70 backdrop-blur-xl border-b border-blue-100/50 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-2xl flex items-center justify-center shadow-lg">
-                <Brain className="h-5 w-5 text-white" />
+              <div className="w-10 h-10 bg-gradient-to-br from-pink-600 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                <BarChart3 className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-                PropAnalyzer Pro
+              <span className="text-xl font-bold bg-gradient-to-r from-pink-600 to-blue-600 bg-clip-text text-transparent">
+                ReservaAnalytics
               </span>
             </Link>
-            <Link to="/" className="inline-flex items-center text-slate-600 hover:text-violet-600 transition-colors group">
+            <Link to="/" className="inline-flex items-center text-slate-600 hover:text-blue-600 transition-colors group">
               <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               Retour à l'accueil
             </Link>
@@ -107,27 +140,27 @@ const Guide = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <Badge className="mb-6 bg-gradient-to-r from-violet-100 to-fuchsia-100 text-violet-700 border-violet-200">
+          <Badge className="mb-6 bg-gradient-to-r from-blue-100 to-pink-100 text-blue-700 border-blue-200">
             <BookOpen className="w-4 h-4 mr-2" />
             Guide d'utilisation
           </Badge>
           <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-            Comment utiliser
-            <span className="block bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent">
-              PropAnalyzer Pro
+            Maîtrisez votre analyse
+            <span className="block bg-gradient-to-r from-pink-600 to-blue-600 bg-clip-text text-transparent">
+              Airbnb & Booking
             </span>
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Découvrez comment utiliser simplement notre plateforme IA 
-            pour vos projets de location en quelques étapes faciles.
+            Apprenez à importer, analyser et optimiser vos réservations 
+            avec notre plateforme IA en quelques étapes simples.
           </p>
         </div>
 
         {/* Steps Section */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">4 étapes simples</h2>
-            <p className="text-xl text-slate-600">Commencez à utiliser PropAnalyzer Pro en moins de 5 minutes</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">4 étapes pour commencer</h2>
+            <p className="text-xl text-slate-600">De l'inscription à l'analyse IA en moins de 10 minutes</p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -153,32 +186,41 @@ const Guide = () => {
         {/* Video Tutorials */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Tutoriels vidéo</h2>
-            <p className="text-xl text-slate-600">Apprenez à utiliser chaque fonctionnalité</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Tutoriels vidéo détaillés</h2>
+            <p className="text-xl text-slate-600">Guides pas-à-pas pour maîtriser chaque fonctionnalité</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {tutorials.map((tutorial, index) => (
               <Card key={index} className="border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 hover:scale-105">
                 <CardContent className="p-6">
-                  <div className="relative mb-6">
-                    <div className="w-full h-48 bg-gradient-to-br from-violet-100 to-fuchsia-100 rounded-2xl flex items-center justify-center">
-                      <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform cursor-pointer">
-                        <Play className="h-6 w-6 text-violet-600 ml-1" />
+                  <div className="relative mb-6 overflow-hidden rounded-lg">
+                    <img 
+                      src={tutorial.thumbnail} 
+                      alt={tutorial.title}
+                      className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 cursor-pointer">
+                      <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+                        <Play className="h-6 w-6 text-blue-600 ml-1" />
                       </div>
                     </div>
-                    <Badge className="absolute top-4 right-4 bg-black/70 text-white">
-                      {feature.duration}
+                    <Badge className="absolute top-3 right-3 bg-black/70 text-white">
+                      {tutorial.duration}
+                    </Badge>
+                    <Badge className="absolute top-3 left-3 bg-blue-600 text-white">
+                      {tutorial.category}
                     </Badge>
                   </div>
                   <div className="flex items-center space-x-3 mb-3">
-                    <div className="w-8 h-8 bg-gradient-to-br from-violet-500 to-fuchsia-500 rounded-lg flex items-center justify-center text-white">
-                      {feature.icon}
+                    <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center text-white">
+                      {tutorial.icon}
                     </div>
-                    <h3 className="text-lg font-semibold text-slate-900">{feature.title}</h3>
+                    <h3 className="text-lg font-semibold text-slate-900">{tutorial.title}</h3>
                   </div>
-                  <p className="text-slate-600 mb-4">{feature.description}</p>
-                  <Button variant="outline" className="w-full">
+                  <p className="text-slate-600 mb-4">{tutorial.description}</p>
+                  <Button variant="outline" className="w-full border-blue-200 text-blue-600 hover:bg-blue-50">
+                    <Play className="mr-2 h-4 w-4" />
                     Regarder le tutoriel
                   </Button>
                 </CardContent>
@@ -192,7 +234,7 @@ const Guide = () => {
           <Card className="border-0 shadow-2xl bg-white/80 backdrop-blur-sm">
             <CardContent className="p-12">
               <div className="flex items-center space-x-4 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center">
                   <Lightbulb className="h-6 w-6 text-white" />
                 </div>
                 <h2 className="text-3xl font-bold text-slate-900">Conseils d'experts</h2>
@@ -200,7 +242,7 @@ const Guide = () => {
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="text-xl font-semibold text-slate-900 mb-4">Points clés à vérifier dans une location</h3>
+                  <h3 className="text-xl font-semibold text-slate-900 mb-4">Bonnes pratiques pour vos analyses</h3>
                   <ul className="space-y-3">
                     {tips.map((tip, index) => (
                       <li key={index} className="flex items-start space-x-3">
@@ -211,19 +253,23 @@ const Guide = () => {
                   </ul>
                 </div>
                 
-                <div className="bg-gradient-to-br from-violet-50 to-fuchsia-50 rounded-2xl p-6">
+                <div className="bg-gradient-to-br from-blue-50 to-pink-50 rounded-2xl p-6">
                   <h3 className="text-xl font-semibold text-slate-900 mb-4">Besoin d'aide ?</h3>
                   <p className="text-slate-600 mb-6">
-                    Notre équipe support est disponible 24/7 pour répondre à toutes vos questions.
+                    Notre équipe support est disponible pour vous accompagner dans l'utilisation de la plateforme.
                   </p>
                   <div className="space-y-3">
-                    <Button className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600">
-                      Contacter le support
-                    </Button>
-                    <Button variant="outline" className="w-full">
-                      <MessageSquare className="mr-2 h-4 w-4" />
-                      Chat en direct
-                    </Button>
+                    <Link to="/contact">
+                      <Button className="w-full bg-gradient-to-r from-pink-600 to-blue-600">
+                        Contacter le support
+                      </Button>
+                    </Link>
+                    <Link to="/dashboard">
+                      <Button variant="outline" className="w-full border-blue-200 text-blue-600 hover:bg-blue-50">
+                        <BarChart3 className="mr-2 h-4 w-4" />
+                        Accéder au tableau de bord
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
