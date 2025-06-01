@@ -1,8 +1,9 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import { 
   BarChart3, 
   FileText, 
@@ -20,6 +21,8 @@ import {
 } from "lucide-react";
 
 const Guide = () => {
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+
   const steps = [
     {
       number: "01",
@@ -58,7 +61,8 @@ const Guide = () => {
       duration: "4 min",
       thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=225&fit=crop",
       icon: <FileSpreadsheet className="h-5 w-5" />,
-      category: "Airbnb"
+      category: "Airbnb",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
       title: "Export des données Booking.com",
@@ -66,7 +70,8 @@ const Guide = () => {
       duration: "5 min", 
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=225&fit=crop",
       icon: <FileSpreadsheet className="h-5 w-5" />,
-      category: "Booking"
+      category: "Booking",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
       title: "Import et analyse des fichiers",
@@ -74,7 +79,8 @@ const Guide = () => {
       duration: "6 min",
       thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=225&fit=crop",
       icon: <Upload className="h-5 w-5" />,
-      category: "Import"
+      category: "Import",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
       title: "Comprendre les statistiques",
@@ -82,7 +88,8 @@ const Guide = () => {
       duration: "7 min",
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=225&fit=crop",
       icon: <BarChart3 className="h-5 w-5" />,
-      category: "Analyse"
+      category: "Analyse",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
       title: "Gestion des logements",
@@ -90,7 +97,8 @@ const Guide = () => {
       duration: "5 min",
       thumbnail: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=225&fit=crop",
       icon: <Home className="h-5 w-5" />,
-      category: "Gestion"
+      category: "Gestion",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
       title: "Prédictions IA avancées",
@@ -98,7 +106,8 @@ const Guide = () => {
       duration: "8 min",
       thumbnail: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=225&fit=crop",
       icon: <Brain className="h-5 w-5" />,
-      category: "IA"
+      category: "IA",
+      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     }
   ];
 
@@ -183,7 +192,7 @@ const Guide = () => {
           </div>
         </section>
 
-        {/* Video Tutorials */}
+        {/* Video Tutorials avec Dialog */}
         <section className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Tutoriels vidéo détaillés</h2>
@@ -219,10 +228,35 @@ const Guide = () => {
                     <h3 className="text-lg font-semibold text-slate-900">{tutorial.title}</h3>
                   </div>
                   <p className="text-slate-600 mb-4">{tutorial.description}</p>
-                  <Button variant="outline" className="w-full border-blue-200 text-blue-600 hover:bg-blue-50">
-                    <Play className="mr-2 h-4 w-4" />
-                    Regarder le tutoriel
-                  </Button>
+                  
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button 
+                        className="w-full bg-gradient-to-r from-pink-600 to-blue-600 hover:from-pink-700 hover:to-blue-700"
+                        onClick={() => setSelectedVideo(tutorial.videoUrl)}
+                      >
+                        <Play className="mr-2 h-4 w-4" />
+                        Regarder le tutoriel
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl w-full">
+                      <DialogHeader>
+                        <DialogTitle className="text-xl font-semibold text-slate-900">
+                          {tutorial.title}
+                        </DialogTitle>
+                      </DialogHeader>
+                      <div className="aspect-video w-full">
+                        <iframe
+                          src={tutorial.videoUrl}
+                          className="w-full h-full rounded-lg"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          title={tutorial.title}
+                        />
+                      </div>
+                      <p className="text-slate-600 mt-4">{tutorial.description}</p>
+                    </DialogContent>
+                  </Dialog>
                 </CardContent>
               </Card>
             ))}
