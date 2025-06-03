@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -62,7 +63,7 @@ const Guide = () => {
       thumbnail: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=225&fit=crop",
       icon: <FileSpreadsheet className="h-5 w-5" />,
       category: "Airbnb",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: "https://www.youtube.com/embed/7H5pWCqVtYI"
     },
     {
       title: "Export des données Booking.com",
@@ -71,7 +72,7 @@ const Guide = () => {
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=225&fit=crop",
       icon: <FileSpreadsheet className="h-5 w-5" />,
       category: "Booking",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: "https://www.youtube.com/embed/YQHsXMglC9A"
     },
     {
       title: "Import et analyse des fichiers",
@@ -80,7 +81,7 @@ const Guide = () => {
       thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=225&fit=crop",
       icon: <Upload className="h-5 w-5" />,
       category: "Import",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: "https://www.youtube.com/embed/kJQP7kiw5Fk"
     },
     {
       title: "Comprendre les statistiques",
@@ -89,7 +90,7 @@ const Guide = () => {
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=225&fit=crop",
       icon: <BarChart3 className="h-5 w-5" />,
       category: "Analyse",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: "https://www.youtube.com/embed/3Li_95A7mL8"
     },
     {
       title: "Gestion des logements",
@@ -98,7 +99,7 @@ const Guide = () => {
       thumbnail: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=225&fit=crop",
       icon: <Home className="h-5 w-5" />,
       category: "Gestion",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: "https://www.youtube.com/embed/TI0vasuR6XM"
     },
     {
       title: "Prédictions IA avancées",
@@ -107,7 +108,7 @@ const Guide = () => {
       thumbnail: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=225&fit=crop",
       icon: <Brain className="h-5 w-5" />,
       category: "IA",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+      videoUrl: "https://www.youtube.com/embed/aircAruvnKk"
     }
   ];
 
@@ -241,8 +242,11 @@ const Guide = () => {
                     </DialogTrigger>
                     <DialogContent className="max-w-4xl w-full">
                       <DialogHeader>
-                        <DialogTitle className="text-xl font-semibold text-slate-900">
-                          {tutorial.title}
+                        <DialogTitle className="text-xl font-semibold text-slate-900 flex items-center space-x-2">
+                          <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-blue-500 rounded-lg flex items-center justify-center text-white">
+                            {tutorial.icon}
+                          </div>
+                          <span>{tutorial.title}</span>
                         </DialogTitle>
                       </DialogHeader>
                       <div className="aspect-video w-full">
@@ -254,7 +258,13 @@ const Guide = () => {
                           title={tutorial.title}
                         />
                       </div>
-                      <p className="text-slate-600 mt-4">{tutorial.description}</p>
+                      <div className="bg-slate-50 rounded-lg p-4">
+                        <p className="text-slate-600 mb-2"><strong>Description:</strong> {tutorial.description}</p>
+                        <div className="flex items-center space-x-4 text-sm text-slate-500">
+                          <span>Durée: {tutorial.duration}</span>
+                          <span>Catégorie: {tutorial.category}</span>
+                        </div>
+                      </div>
                     </DialogContent>
                   </Dialog>
                 </CardContent>
